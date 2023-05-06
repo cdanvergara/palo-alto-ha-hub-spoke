@@ -8,6 +8,10 @@
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+    "baseUri": {
+        "type": "string",
+        "defaultValue": "https://raw.githubusercontent.com/cdanvergara/palo-alto-ha-hub-spoke/"
     }
   },
   "variables": {
@@ -23,7 +27,6 @@
     "devSpokeVnetPrefix": "10.10.0.0/16",
     "prodSpokeVnetName": "spokeProdVnet",
     "prodSpokeVnetPrefix": "10.100.0.0/16",
-
     "hubID": "[resourceId('Microsoft.Network/virtualNetworks/', variables('hubVnetName'))]",
     "devSpokeID": "[resourceId('Microsoft.Network/virtualNetworks/', variables('devSpokeVnetName'))]",
     "prodSpokeID": "[resourceId('Microsoft.Network/virtualNetworks/', variables('prodSpokeVnetName'))]"
