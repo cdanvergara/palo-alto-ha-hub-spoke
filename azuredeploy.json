@@ -205,7 +205,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(parameters('baseUri'), parameters('folder') ,'/pa/pa.deploy.json')]",
+                    "uri": "[concat(parameters('baseUri'), parameters('branch') ,'/pa/pa.deploy.json')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
