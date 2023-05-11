@@ -27,7 +27,7 @@ A single resource group that contains the following resources:
 
 ### Diagram
 
-![alt text](images/paloaltodiagram.png "Diagram of the resources created by the template")). 
+![alt text](images/paloaltodiagram.png "Diagram of the resources created by the template") 
 
 ## Prerequisites
 
