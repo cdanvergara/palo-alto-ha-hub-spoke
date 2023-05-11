@@ -1,67 +1,48 @@
 # palo-alto-ha-hub-spoke
-ARM Template to deploy Palo Alto NVA in HA using Hub and Spoke Topology
-
-![Azure Public Test Date](https://azurequickstartsservice.blob.core.windows.net/badges/path-to-sample/PublicLastTestDate.svg)
-![Azure Public Test Result](https://azurequickstartsservice.blob.core.windows.net/badges/path-to-sample/PublicDeployment.svg)
-
-![Azure US Gov Last Test Date](https://azurequickstartsservice.blob.core.windows.net/badges/path-to-sample/FairfaxLastTestDate.svg)
-![Azure US Gov Last Test Result](https://azurequickstartsservice.blob.core.windows.net/badges/path-to-sample/FairfaxDeployment.svg)
-
-![Best Practice Check](https://azurequickstartsservice.blob.core.windows.net/badges/path-to-sample/BestPracticeResult.svg)
-![Cred Scan Check](https://azurequickstartsservice.blob.core.windows.net/badges/path-to-sample/CredScanResult.svg)
-
+ARM Template to deploy Palo Alto VM-Series in High Availability using Hub and Spoke Topology
 ```
-If the sample includes a main.bicep file:
-```
-
-![Bicep Version](https://azurequickstartsservice.blob.core.windows.net/badges/path-to-sample/BicepVersion.svg)
-
 [![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2Fcdanvergara%2Fpalo-alto-ha-hub-spoke%2Fmain%2Fazuredeploy.json)
 [![Deploy To Azure US Gov](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazuregov.svg?sanitize=true)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2Fcdanvergara%2Fpalo-alto-ha-hub-spoke%2Fmain%2Fazuredeploy.json)
 [![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https://raw.githubusercontent.com/cdanvergara/palo-alto-ha-hub-spoke/main/azuredeploy.json)
 
 ```
+This template deploys Palo Alto Vm-Series Network Virtual Appliances in High Availability, following the Hub-Spoke topology. 
 
-To add a createUiDefinition.json file to the deploy button, append the url to the createUiDefinition.json file to the href for the button, e.g.
+## Deploying Palo Alto VM-Series Network Virtual Appliances in High Availability
 
-https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fpath-to-sample%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fpath-to-sample%2FcreateUiDefinition.json
-
-Note the url is case sensitive.
-
-```
-
-This template deploys a **solution name**. The **solution name** is a **description**
-
-## Sample overview and deployed resources
-
-This is an overview of the solution
+This solution deploys a Hub and Spoke Topology. In the Hub virtual network 2 VM-Series appliances are deployed within an Availability Set to ensure High Availability.
 
 The following resources are deployed as part of the solution
 
-### Resource provider 1
+### Resource Group
 
-Description Resource Provider 1
+A single resource group that contains the following resources:
 
-- **Resource type 1A**: Description Resource type 1A
-- **Resource type 1B**: Description Resource type 1B-
-- **Resource type 1C**: Description Resource type 1C
+- **Virtual Networks**: 3 Virtual Networks, HubVNET, ProdSpokevnet and Devspokevnet
+- **Hub Subnets**: Within the HubVNET 3 subnest are created followign the best practices from Aplo Alto (Trust, Untrust and Management Subnet)
+- **Availability Set**: One Availability Set where both Network Virtual Appliances are deployed to ensure High Availability
+- **Virtual Machines**: 2 Virtual machines that use the latest Palo Alto BYOL image available from the standard Azure gallery
+- **Network Interfaces**: 6 Network Interfaces (3 for each Virtual machine (1 Trust, 1 Untrust, 1 Management))
+- **Load balancers**: 2 Load Balancers, one to handle all the inbound traffic from the Internet (Untrust subnet), another instance placed to handle all the inbound traffic from the spokes (Trust subnet)
 
-### Resource provider 2
+### Diagram
 
-Description Resource Provider 2
-
-- **Resource type 2A**: Description Resource type 2A
-
-### Resource provider 3
-
-Description Resource Provider 3
-
-- **Resource type 3A**: Description Resource type 3A
-- **Resource type 3B**: Description Resource type 3B
+![alt text](images/paloaltodiagram.png "Diagram of the resources created by the template")). 
 
 ## Prerequisites
 
-Decscription of the prerequistes for the deployment
+No prerequistes neede for the deployment, if you want a Resource Group to host the resources can be created, otherwise a new resource group can be created at the moment of the deployment.
+
+## Deployment steps
+
+You can click the "deploy to Azure" button at the beginning of this document.
+
+## Notes
+
+It's important to change the password for the local administrator from the parameters.
+You will need a valid license to activate your appliance once the deployment concludes.
+
+`Tags: PaloAlto, Vm-Series, HA, ARM template`
 
 ## Deployment steps
 
