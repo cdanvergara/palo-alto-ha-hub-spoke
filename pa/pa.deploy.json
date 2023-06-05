@@ -93,15 +93,15 @@
         },
         "Username": {
             "type": "string",
-            "defaultValue": "paloalto",
+            "defaultValue": "paadmin",
             "metadata": {
                 "description": "The name of the pivileged account that should be used to ssh and login to the PanOS web portal."
             }
         },
         "Password": {
             "type": "securestring",
-            "defaultValue": "P@l0@lt0!dem0$",
-            "maxLength": 31,
+            "defaultValue": "GEN-PASSWORD",
+            "maxLength": 32,
             "metadata": {
                 "description": "Password to the privileged account used to ssh and login to the PanOS web portal."
             }
