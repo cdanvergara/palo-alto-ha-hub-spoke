@@ -242,9 +242,6 @@
                         "properties": {
                             "privateIPAllocationMethod": "Static",
                             "privateIpAddress": "[concat(parameters('manPrivateIPPrefix'),copyIndex(parameters('manPrivateIPFirst')))]",
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(parameters('envPrefix'),'-',copyIndex(1),'-Management-PIP'))]"
-                            },
                             "subnet": {
                                 "id": "[concat(resourceId(parameters('VNetRG'), 'Microsoft.Network/virtualNetworks', parameters('VNetName')), '/subnets/', parameters('managementSubnetName'))]"
                             }
@@ -277,9 +274,6 @@
                         "properties": {
                             "privateIPAllocationMethod": "Static",
                             "privateIpAddress": "[concat(parameters('untrustPrivateIPPrefix'),copyIndex(add(parameters('untrustPrivateIPFirst'),1)))]",
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(parameters('envPrefix'),'-',copyIndex(1),'-Untrust-PIP'))]"
-                            },
                             "subnet": {
                                 "id": "[concat(resourceId(parameters('VNetRG'), 'Microsoft.Network/virtualNetworks', parameters('VNetName')), '/subnets/', parameters('untrustSubnetName'))]"
                             },
