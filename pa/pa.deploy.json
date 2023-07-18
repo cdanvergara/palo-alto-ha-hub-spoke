@@ -100,7 +100,7 @@
         },
         "Password": {
             "type": "securestring",
-            "defaultValue": "GEN-PASSWORD",
+            "defaultValue": "Demo!pass123",
             "maxLength": 32,
             "metadata": {
                 "description": "Password to the privileged account used to ssh and login to the PanOS web portal."
